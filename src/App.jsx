@@ -1,5 +1,5 @@
 function App() {
-  return <h1 class="text-lg font-bold underline">Hello world!</h1>;
+  return <p class="text-lg font-bold ">Hello world!</p>;
 }
 
 export default App;
