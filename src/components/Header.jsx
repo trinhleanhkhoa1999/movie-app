@@ -3,11 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = () => {
   return (
-    <header className="flex h-14 items-center justify-between bg-slate-950 px-8 text-white">
-      <div className="flex items-center gap-4">
+    <header className="flex h-14 items-center justify-between bg-slate-950 px-8 text-white lg:h-20">
+      <div className="flex items-center gap-4 lg:gap-6">
         <img src="./netflix.png" alt="netflix" className="w-16 sm:w-28" />
-        <a href="#">Phim</a>
-        <a href="#">Tv show</a>
+        <a href="#" className="lg:text-xl">
+          Phim
+        </a>
+        <a href="#" className="lg:text-xl">
+          Tv show
+        </a>
       </div>
       <div>
         <FontAwesomeIcon icon={faMagnifyingGlass} className="cursor-pointer" />
