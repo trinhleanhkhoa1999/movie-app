@@ -1,8 +1,14 @@
-import CircularProgressBar from "./CircularProgressBar";
+import CircularProgressBar from "../CircularProgressBar";
+import { useNavigate } from "react-router-dom";
 
-const MovieCard = ({ title, releaseDate, poster, point, mediaType }) => {
+const MovieCard = ({ title, releaseDate, poster, point, mediaType, id }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="relative rounded-lg border border-slate-800">
+    <div
+      className="relative rounded-lg border border-slate-800"
+      onClick={() => navigate(`/movie/${id}`)}
+    >
       {mediaType === "tv" && (
         <p className="absolute top-1 right-1 rounded bg-black p-1 text-sm text-white">
           TV Show
