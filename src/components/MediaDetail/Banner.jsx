@@ -23,7 +23,7 @@ const Banner = ({ mediaInfo }) => {
         src={`https://media.themoviedb.org/t/p/original${mediaInfo.backdrop_path}`}
         alt=""
       />
-      <div className="relative mx-auto flex max-w-4xl gap-6 px-6 py-10 lg:gap-8">
+      <div className="relative mx-auto flex max-w-4xl gap-6 px-6 py-10 lg:gap-8 xl:max-w-6xl">
         <div className="flex-1">
           <img
             className=""
