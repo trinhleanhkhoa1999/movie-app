@@ -13,9 +13,7 @@ const Banner = ({ mediaInfo }) => {
   const crews = (mediaInfo?.credits?.crew || [])
     .filter((crew) => ["Director", "Writer", "Screenplay"].includes(crew.job))
     .map((crew) => ({ id: crew.id, job: crew.job, name: crew.name }));
-  console.log("🚀 ~ MovieDetail ~ crews:", crews);
   const groundedCrews = groupBy(crews, "job");
-  console.log("🚀 ~ MovieDetail ~ groundedCrews:", groundedCrews);
   return (
     <div className="relative overflow-hidden text-white">
       <img

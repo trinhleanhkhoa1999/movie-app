@@ -16,7 +16,6 @@ const MediaList = ({ title, tabs }) => {
         },
       }).then(async (res) => {
         const data = await res.json();
-        console.log("🚀 ~ MediaList ~ data:", data);
         const trendingMediaList = data.results.slice(0, 12);
         setMediaList(trendingMediaList);
       });
