@@ -1,10 +1,6 @@
 import MovieCard from "@components/MovieCard";
 
-const RelatedMedia = ({
-  mediaList = [],
-  setIsLoadingRelatedMovie,
-  isLoadingRelatedMovie,
-}) => {
+const RelatedMedia = ({ mediaList = [] }) => {
   return (
     <div>
       <p className="mt-4 mb-4 text-[1.4vw] font-bold">Related Movie</p>
@@ -23,12 +19,6 @@ const RelatedMedia = ({
           );
         })}
       </div>
-      <p
-        className="mt-4 inline-block cursor-pointer rounded-lg bg-slate-600 px-3 py-2 text-[1.3vw]"
-        onClick={() => setIsLoadingRelatedMovie(!isLoadingRelatedMovie)}
-      >
-        {isLoadingRelatedMovie ? "Show Less" : "Show More Related Movie"}
-      </p>
     </div>
   );
 };
