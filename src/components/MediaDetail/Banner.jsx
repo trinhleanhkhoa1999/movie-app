@@ -2,6 +2,7 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { groupBy } from "lodash";
 import CircularProgressBar from "../CircularProgressBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ImageComponent from "@components/ImageComponent";
 
 const Banner = ({ mediaInfo }) => {
   const certification = (
@@ -16,14 +17,18 @@ const Banner = ({ mediaInfo }) => {
   const groundedCrews = groupBy(crews, "job");
   return (
     <div className="relative overflow-hidden text-white shadow-sm shadow-slate-800">
-      <img
-        className="absolute inset-0 h-full brightness-[.2] sm:h-auto"
+      <ImageComponent
+        width={900}
+        height={500}
+        className="absolute inset-0 h-full w-full brightness-[.2] sm:h-auto"
         src={`https://media.themoviedb.org/t/p/original${mediaInfo.backdrop_path}`}
         alt=""
       />
       <div className="relative mx-auto flex max-w-4xl gap-6 px-6 py-10 lg:gap-8 xl:max-w-6xl">
         <div className="flex-1">
-          <img
+          <ImageComponent
+            width={600}
+            height={900}
             className=""
             src={`https://media.themoviedb.org/t/p/original${mediaInfo.poster_path}`}
             alt=""

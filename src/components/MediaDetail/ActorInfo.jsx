@@ -1,7 +1,9 @@
+import ImageComponent from "@components/ImageComponent";
+
 const ActorInfo = ({ name, profilePath, character }) => {
   return (
     <div className="rounded-lg border border-slate-300 shadow-2xl">
-      <img
+      <ImageComponent
         className="rounded-md"
         src={
           profilePath
@@ -9,6 +11,8 @@ const ActorInfo = ({ name, profilePath, character }) => {
             : `/noImage.svg`
         }
         alt=""
+        width={276}
+        height={350}
       />
 
       <div className="rounded-lg bg-black p-2">
