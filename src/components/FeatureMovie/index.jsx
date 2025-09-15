@@ -1,26 +1,39 @@
 import { useEffect, useState } from "react";
 import Movie from "./Movie";
 import PaginateIndicator from "./PaginateIndicator";
+import useFetch from "@hooks/useFetch";
 
 const FeatureMovie = () => {
-  const [movies, setMovies] = useState([]);
+  // const [movies, setMovies] = useState([]);
   const [activeMovieId, setActiveMovieId] = useState();
 
+  const { data: popularMoviesResponse } = useFetch({
+    url: "/movie/popular",
+  });
+  const movies = (popularMoviesResponse.results || []).slice(0, 4);
+
   useEffect(() => {
-    fetch("https://api.themoviedb.org/3/movie/popular", {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNDA5YTE3OGM2OWIyZTljY2ViYTZjZGU4YWJiNWFkMiIsIm5iZiI6MTczMTQwNTgxMC45MjcsInN1YiI6IjY3MzMyN2YyMDQwNTRkMzFkNGFjZWJkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NJ6lk6gTF2S8fOS8MeqSW4jberkXPPpscOQ5huKGZt4",
-      },
-    }).then(async (res) => {
-      const data = await res.json();
-      const popularMovies = data.results.slice(0, 4);
-      setMovies(popularMovies);
-      setActiveMovieId(popularMovies[0].id);
-    });
-  }, []);
+    if (movies[0]?.id) {
+      setActiveMovieId(movies[0].id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(movies)]);
+
+  // useEffect(() => {
+  //   fetch("https://api.themoviedb.org/3/movie/popular", {
+  //     method: "GET",
+  //     headers: {
+  //       accept: "application/json",
+  //       Authorization:
+  //         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNDA5YTE3OGM2OWIyZTljY2ViYTZjZGU4YWJiNWFkMiIsIm5iZiI6MTczMTQwNTgxMC45MjcsInN1YiI6IjY3MzMyN2YyMDQwNTRkMzFkNGFjZWJkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NJ6lk6gTF2S8fOS8MeqSW4jberkXPPpscOQ5huKGZt4",
+  //     },
+  //   }).then(async (res) => {
+  //     const data = await res.json();
+  //     const popularMovies = data.results.slice(0, 4);
+  //     setMovies(popularMovies);
+  //     setActiveMovieId(popularMovies[0].id);
+  //   });
+  // }, []);
   // Auto next movie every 5s
   useEffect(() => {
     if (movies.length === 0) return;

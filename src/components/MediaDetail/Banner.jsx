@@ -17,7 +17,7 @@ const Banner = ({ mediaInfo }) => {
   return (
     <div className="relative overflow-hidden text-white shadow-sm shadow-slate-800">
       <img
-        className="absolute inset-0 brightness-[.2]"
+        className="absolute inset-0 h-full brightness-[.2] sm:h-auto"
         src={`https://media.themoviedb.org/t/p/original${mediaInfo.backdrop_path}`}
         alt=""
       />
