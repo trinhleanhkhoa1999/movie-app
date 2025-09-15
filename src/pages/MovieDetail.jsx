@@ -19,10 +19,7 @@ const MovieDetail = () => {
   } = useFetch({
     url: `/movie/${id}/recommendations`,
   });
-  console.log(
-    "🚀 ~ MovieDetail ~ recommandationsRelatedMovie:",
-    recommandationsRelatedMovie,
-  );
+
   const relatedMovie = recommandationsRelatedMovie.results || [];
 
   if (isLoading) {
