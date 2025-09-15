@@ -21,7 +21,7 @@ const MovieCard = ({ title, releaseDate, poster, point, mediaType, id }) => {
         />
         <div className="relative -top-[1.2vw] px-4">
           <CircularProgressBar
-            percent={Math.round(point * 10)}
+            percent={Math.round(point * 10) || 0}
             strokeColor={point > 7 ? "green" : point > 5 ? "orange" : " red"}
           />
           <p className="mt-2 font-bold">{title}</p>
