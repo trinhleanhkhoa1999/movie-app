@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Movie from "./Movie";
-import PaginateIndicator from "./PaginateIndicator";
 import useFetch from "@hooks/useFetch";
+import PaginateIndicator from "./PaginateIndicator";
+import Movie from "./Movie";
 
 const FeatureMovie = () => {
   // const [movies, setMovies] = useState([]);

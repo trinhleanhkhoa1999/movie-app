@@ -1,6 +1,6 @@
 import { useState } from "react";
-import MovieCard from "../MovieCard";
 import useFetch from "@hooks/useFetch";
+import MovieCard from "@components/MovieCard";
 
 const MediaList = ({ title, tabs }) => {
   const [activeTabId, setActiveTabId] = useState(tabs[0].id);

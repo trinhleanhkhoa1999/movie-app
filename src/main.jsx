@@ -2,9 +2,9 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import MovieDetail from "./pages/MovieDetail";
-import RootLayout from "./pages/RootLayout";
+import RootLayout from "@pages/RootLayout";
+import HomePage from "@pages/HomePage";
+import MovieDetail from "@pages/MovieDetail";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +23,5 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+  <RouterProvider router={router} />,
 );
