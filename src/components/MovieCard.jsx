@@ -4,10 +4,13 @@ import ImageComponent from "./ImageComponent";
 
 const MovieCard = ({ title, releaseDate, poster, point, mediaType, id }) => {
   return (
-    <Link to={`movie/${id}`} className="rounded-lg border border-slate-800">
+    <Link
+      to={mediaType === "tv" ? `tv/${id}` : `movie/${id}`}
+      className="rounded-lg border border-slate-800"
+    >
       <div className="relative">
         {mediaType === "tv" && (
-          <p className="absolute top-1 right-1 rounded bg-black p-1 text-sm text-white">
+          <p className="absolute top-1 right-1 rounded bg-black p-1 text-white sm:text-sm">
             TV Show
           </p>
         )}
@@ -22,15 +25,6 @@ const MovieCard = ({ title, releaseDate, poster, point, mediaType, id }) => {
           height={"385.5"}
         />
 
-        {/* <img
-          className="rounded-lg"
-          src={
-            poster
-              ? `https://media.themoviedb.org/t/p/w600_and_h900_bestv2${poster}`
-              : "/noImage.svg"
-          }
-          alt=""
-        /> */}
         <div className="relative -top-[1.2vw] px-4">
           <CircularProgressBar
             percent={Math.round(point * 10) || 0}

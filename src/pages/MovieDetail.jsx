@@ -25,10 +25,29 @@ const MovieDetail = () => {
   if (isLoading) {
     return <Loading />;
   }
+  const certification = (
+    (movieInfo.release_dates?.results || []).find(
+      (result) => result.iso_3166_1 === "US",
+    )?.release_dates || []
+  ).find((release_date) => release_date.certification)?.certification;
+
+  const crews = (movieInfo?.credits?.crew || [])
+    .filter((crew) => ["Director", "Writer", "Screenplay"].includes(crew.job))
+    .map((crew) => ({ id: crew.id, job: crew.job, name: crew.name }));
 
   return (
     <div>
-      <Banner mediaInfo={movieInfo} />
+      <Banner
+        title={movieInfo.title}
+        backdropPath={movieInfo.backdrop_path}
+        posterPath={movieInfo.poster_path}
+        certification={certification}
+        crews={crews}
+        genres={movieInfo.genres}
+        point={movieInfo.vote_average}
+        releaseDate={movieInfo.release_date}
+        overview={movieInfo.overview}
+      />
       <div className="bg-black text-[1.2vw] text-white">
         <div className="mx-auto flex max-w-4xl gap-6 px-6 py-10 xl:max-w-6xl">
           <div className="flex-2">
