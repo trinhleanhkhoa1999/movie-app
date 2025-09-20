@@ -3,8 +3,8 @@ import Loading from "@components/Loading";
 import Banner from "@components/MediaDetail/Banner";
 import ActorList from "@components/MediaDetail/ActorList";
 import RelatedMedia from "@components/MediaDetail/RelatedMedia";
-import MovieInfomation from "@components/MediaDetail/MovieInfomation";
 import useFetch from "@hooks/useFetch";
+import TVShowInfomation from "@components/MediaDetail/TVShowInfomation";
 
 const TVShowDetail = () => {
   const { id } = useParams();
@@ -15,12 +15,12 @@ const TVShowDetail = () => {
 
   const {
     data: recommandationsRelatedMovie,
-    isLoading: isRelatedMoviesLoading,
+    isLoading: isRecommandationLoading,
   } = useFetch({
     url: `/tv/${id}/recommendations`,
   });
 
-  const relatedMovie = recommandationsRelatedMovie.results || [];
+  const relatedTVShow = recommandationsRelatedMovie.results || [];
 
   const certification = (tvInfo.content_ratings?.results || []).find(
     (result) => result.iso_3166_1 === "US",
@@ -31,6 +31,7 @@ const TVShowDetail = () => {
       const jobs = (crew.jobs || []).map((j) => j.job);
       return ["Director", "Writer"].some((job) => jobs.find((j) => j === job));
     })
+    .slice(0, 5)
     .map((crew) => ({ id: crew.id, job: crew.jobs[0].job, name: crew.name }));
   if (isLoading) {
     return <Loading />;
@@ -60,12 +61,12 @@ const TVShowDetail = () => {
               }))}
             />
             <RelatedMedia
-              mediaList={relatedMovie}
-              isLoading={isRelatedMoviesLoading}
+              mediaList={relatedTVShow}
+              isLoading={isRecommandationLoading}
             />
           </div>
           <div className="flex-1">
-            <MovieInfomation movieInfo={tvInfo} />
+            <TVShowInfomation tvInfo={tvInfo} />
           </div>
         </div>
       </div>
