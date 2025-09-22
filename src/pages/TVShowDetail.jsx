@@ -5,6 +5,7 @@ import ActorList from "@components/MediaDetail/ActorList";
 import RelatedMedia from "@components/MediaDetail/RelatedMedia";
 import useFetch from "@hooks/useFetch";
 import TVShowInfomation from "@components/MediaDetail/TVShowInfomation";
+import SeasonsList from "@components/MediaDetail/SeasonsList";
 
 const TVShowDetail = () => {
   const { id } = useParams();
@@ -12,6 +13,7 @@ const TVShowDetail = () => {
   const { data: tvInfo, isLoading } = useFetch({
     url: `/tv/${id}?append_to_response=content_ratings,aggregate_credits`,
   });
+  console.log("🚀 ~ TVShowDetail ~ tvInfo:", tvInfo);
 
   const {
     data: recommandationsRelatedMovie,
@@ -60,6 +62,7 @@ const TVShowDetail = () => {
                 episodeCount: cast.roles[0]?.episode_count,
               }))}
             />
+            <SeasonsList seasons={tvInfo?.seasons || []} />
             <RelatedMedia
               mediaList={relatedTVShow}
               isLoading={isRecommandationLoading}
