@@ -64,7 +64,7 @@ const Banner = ({
                     <iframe
                       title="Trailer"
                       src={`https://www.youtube.com/embed/${trailerVideoKey}`}
-                      className="w-[50vw]"
+                      className="w-[50vw] sm:h-[30vh]"
                     />,
                   ));
               }}
