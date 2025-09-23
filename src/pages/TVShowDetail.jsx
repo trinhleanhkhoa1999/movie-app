@@ -11,7 +11,7 @@ const TVShowDetail = () => {
   const { id } = useParams();
 
   const { data: tvInfo, isLoading } = useFetch({
-    url: `/tv/${id}?append_to_response=content_ratings,aggregate_credits`,
+    url: `/tv/${id}?append_to_response=content_ratings,aggregate_credits,videos`,
   });
   console.log("🚀 ~ TVShowDetail ~ tvInfo:", tvInfo);
 
@@ -51,6 +51,11 @@ const TVShowDetail = () => {
         point={tvInfo.vote_average}
         releaseDate={tvInfo.first_air_date}
         overview={tvInfo.overview}
+        trailerVideoKey={
+          (tvInfo.videos?.results || []).find(
+            (video) => video.type === "Trailer",
+          )?.key
+        }
       />
       <div className="bg-black text-[1.2vw] text-white">
         <div className="mx-auto flex max-w-4xl gap-6 px-6 py-10 xl:max-w-6xl">

@@ -1,11 +1,14 @@
 import ImageComponent from "@components/ImageComponent";
+import { useModalContext } from "@context/ModalProvider";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Movie = (props) => {
   const {
     data: { backdrop_path, title, release_date, overview },
+    trailerVideoKey,
   } = props;
+  const { setContent, setIsShowing } = useModalContext();
   return (
     <div>
       <ImageComponent
@@ -29,7 +32,19 @@ const Movie = (props) => {
             <p>{overview}</p>
           </div>
           <div className="mt-2">
-            <button className="text-10 mr-2 rounded bg-white px-4 py-2 text-black lg:text-lg">
+            <button
+              className="text-10 mr-2 rounded bg-white px-4 py-2 text-black lg:text-lg"
+              onClick={() => {
+                (setContent(
+                  <iframe
+                    title="Trailer"
+                    src={`https://www.youtube.com/embed/${trailerVideoKey}`}
+                    className="w-[50vw]"
+                  />,
+                ),
+                  setIsShowing(true));
+              }}
+            >
               <FontAwesomeIcon icon={faPlay} />
               Trailer
             </button>

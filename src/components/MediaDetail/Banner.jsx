@@ -3,6 +3,7 @@ import { groupBy } from "lodash";
 import CircularProgressBar from "../CircularProgressBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ImageComponent from "@components/ImageComponent";
+import { useModalContext } from "@context/ModalProvider";
 
 const Banner = ({
   title,
@@ -14,8 +15,10 @@ const Banner = ({
   point,
   releaseDate,
   overview,
+  trailerVideoKey,
 }) => {
   const groundedCrews = groupBy(crews, "job");
+  const { setIsShowing, setContent } = useModalContext();
   return (
     <div className="relative overflow-hidden text-white shadow-sm shadow-slate-800">
       <ImageComponent
@@ -54,10 +57,21 @@ const Banner = ({
               />
               Rating
             </div>
-            <div>
+            <button
+              onClick={() => {
+                (setIsShowing(true),
+                  setContent(
+                    <iframe
+                      title="Trailer"
+                      src={`https://www.youtube.com/embed/${trailerVideoKey}`}
+                      className="w-[50vw]"
+                    />,
+                  ));
+              }}
+            >
               <FontAwesomeIcon icon={faPlay} className="mr-1" />
               Trailer
-            </div>
+            </button>
           </div>
           <div className="mt-4">
             <p className="mb-2 text-[1.3vw] font-bold">Overview</p>

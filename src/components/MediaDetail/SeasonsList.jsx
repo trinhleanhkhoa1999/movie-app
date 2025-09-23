@@ -29,7 +29,7 @@ const SeasonsList = ({ seasons = [] }) => {
               <div className="flex items-center gap-2">
                 <p className="font-bold">Rating</p>
                 <CircularProgressBar
-                  percent={Math.round(season.vote_average)}
+                  percent={Math.round(season.vote_average * 10)}
                   size={2.5}
                   strokeWidth={0.2}
                 />
