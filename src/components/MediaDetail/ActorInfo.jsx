@@ -10,9 +10,8 @@ const ActorInfo = ({ id, name, profilePath, character, episodeCount }) => {
       <ImageComponent
         className="rounded-md"
         src={
-          profilePath
-            ? `https://media.themoviedb.org/t/p/w276_and_h350_face/${profilePath}`
-            : `/noImage.svg`
+          profilePath &&
+          `https://media.themoviedb.org/t/p/w276_and_h350_face/${profilePath}`
         }
         alt=""
         width={276}

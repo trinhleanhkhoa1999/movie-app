@@ -20,7 +20,10 @@ const SeasonsList = ({ seasons = [] }) => {
               <ImageComponent
                 width={130}
                 height={195}
-                src={`https://media.themoviedb.org/t/p/w130_and_h195_face${season.poster_path}`}
+                src={
+                  season.poster_path &&
+                  `https://media.themoviedb.org/t/p/w130_and_h195_face${season.poster_path}`
+                }
                 className="h-[195px] max-w-[300px] rounded-lg"
               />
             </div>
