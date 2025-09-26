@@ -8,11 +8,11 @@ const RelatedMedia = ({ mediaList = [], isLoading = false, title }) => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="grid grid-cols-3 gap-6 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
           {mediaList.map((media) => {
             return (
               <MovieCard
-                key={media.id}
+                key={`${media.media_type}-${media.id}`}
                 title={media.title || media.name}
                 releaseDate={media.release_date || media.first_air_date}
                 poster={media.poster_path}
