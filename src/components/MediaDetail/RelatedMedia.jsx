@@ -1,10 +1,10 @@
 import Loading from "@components/Loading";
 import MovieCard from "@components/MovieCard";
 
-const RelatedMedia = ({ mediaList = [], isLoading = false }) => {
+const RelatedMedia = ({ mediaList = [], isLoading = false, title }) => {
   return (
     <div>
-      <p className="mt-4 mb-4 text-[1.4vw] font-bold">Related Movie</p>
+      <p className="mt-4 mb-4 text-[1.4vw] font-bold">{title}</p>
       {isLoading ? (
         <Loading />
       ) : (

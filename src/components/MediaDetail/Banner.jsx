@@ -20,7 +20,7 @@ const Banner = ({
   const groundedCrews = groupBy(crews, "job");
   const { openPopup } = useModalContext();
   return (
-    <div className="relative overflow-hidden text-white shadow-sm shadow-slate-800">
+    <div className="relative overflow-hidden text-white shadow-sm shadow-slate-800 bg-black">
       <ImageComponent
         width={900}
         height={500}

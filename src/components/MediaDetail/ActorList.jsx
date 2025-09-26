@@ -12,6 +12,7 @@ const ActorList = ({ actors = [] }) => {
           return (
             <ActorInfo
               key={actor.id}
+              id={actor.id}
               name={actor.name}
               profilePath={actor.profile_path}
               character={actor.character}
