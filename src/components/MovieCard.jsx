@@ -17,12 +17,11 @@ const MovieCard = ({ title, releaseDate, poster, point, mediaType, id }) => {
         <ImageComponent
           className={"rounded-lg"}
           src={
-            poster
-              ? `https://media.themoviedb.org/t/p/w600_and_h900_bestv2${poster}`
-              : "/noImage.svg"
+            poster &&
+            `https://media.themoviedb.org/t/p/w600_and_h900_bestv2${poster}`
           }
           width={"276"}
-          height={"385.5"}
+          height={"385"}
         />
 
         <div className="relative -top-[1.2vw] px-1 md:px-2">

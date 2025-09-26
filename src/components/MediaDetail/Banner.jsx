@@ -20,12 +20,15 @@ const Banner = ({
   const groundedCrews = groupBy(crews, "job");
   const { openPopup } = useModalContext();
   return (
-    <div className="relative overflow-hidden text-white shadow-sm shadow-slate-800 bg-black">
+    <div className="relative overflow-hidden bg-black text-white shadow-sm shadow-slate-800">
       <ImageComponent
         width={900}
         height={500}
         className="absolute inset-0 h-full w-full brightness-[.2] sm:h-auto"
-        src={`https://media.themoviedb.org/t/p/original${backdropPath}`}
+        src={
+          backdropPath &&
+          `https://media.themoviedb.org/t/p/original${backdropPath}`
+        }
         alt=""
       />
       <div className="relative mx-auto flex max-w-4xl gap-6 px-6 py-10 lg:gap-8 xl:max-w-6xl">
@@ -34,7 +37,10 @@ const Banner = ({
             width={600}
             height={900}
             className=""
-            src={`https://media.themoviedb.org/t/p/original${posterPath}`}
+            src={
+              posterPath &&
+              `https://media.themoviedb.org/t/p/original${posterPath}`
+            }
             alt=""
           />
         </div>

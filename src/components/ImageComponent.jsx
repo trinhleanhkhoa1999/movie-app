@@ -13,6 +13,7 @@ const ImageComponent = ({ className, src, width, height }) => {
       };
     }
     setCurrentSrc(`https://placehold.co/${width}x${height}?text=No Image...`);
+
     return () => {
       img.onload = null; // clear up func
     };
@@ -21,7 +22,9 @@ const ImageComponent = ({ className, src, width, height }) => {
   return (
     <div>
       <img
-        className={currentSrc === src ? className : `${className} blur-sm`}
+        className={
+          currentSrc === src || !src ? className : `${className} blur-sm`
+        }
         src={currentSrc}
         alt=""
         width={width}

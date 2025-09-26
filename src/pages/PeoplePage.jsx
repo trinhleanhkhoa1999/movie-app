@@ -1,14 +1,8 @@
 import ImageComponent from "@components/ImageComponent";
 import RelatedMedia from "@components/MediaDetail/RelatedMedia";
+import { GENDERS_MAPPING } from "@libs/constants";
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-
-const GENDERS_MAPPING = {
-  0: "Not set / not specified",
-  1: "Female",
-  2: "Male",
-  3: "Non-binary",
-};
 
 const PeoplePage = () => {
   const peopleInfo = useLoaderData();
@@ -18,7 +12,10 @@ const PeoplePage = () => {
       <div className="container">
         <div className="flex-1">
           <ImageComponent
-            src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${peopleInfo.profile_path}`}
+            src={
+              peopleInfo.profile_path &&
+              `https://image.tmdb.org/t/p/w600_and_h900_bestv2${peopleInfo.profile_path}`
+            }
             width={600}
             height={900}
             className="mb-6"
