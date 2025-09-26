@@ -25,7 +25,7 @@ const MovieCard = ({ title, releaseDate, poster, point, mediaType, id }) => {
           height={"385.5"}
         />
 
-        <div className="relative -top-[1.2vw] px-4">
+        <div className="relative -top-[1.2vw] px-1 md:px-2">
           <CircularProgressBar
             percent={Math.round(point * 10) || 0}
             strokeColor={point > 7 ? "green" : point > 5 ? "orange" : " red"}
