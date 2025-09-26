@@ -18,7 +18,7 @@ const Banner = ({
   trailerVideoKey,
 }) => {
   const groundedCrews = groupBy(crews, "job");
-  const { setIsShowing, setContent } = useModalContext();
+  const { openPopup } = useModalContext();
   return (
     <div className="relative overflow-hidden text-white shadow-sm shadow-slate-800">
       <ImageComponent
@@ -59,14 +59,13 @@ const Banner = ({
             </div>
             <button
               onClick={() => {
-                (setIsShowing(true),
-                  setContent(
-                    <iframe
-                      title="Trailer"
-                      src={`https://www.youtube.com/embed/${trailerVideoKey}`}
-                      className="w-[50vw] sm:h-[30vh]"
-                    />,
-                  ));
+                openPopup(
+                  <iframe
+                    title="Trailer"
+                    src={`https://www.youtube.com/embed/${trailerVideoKey}`}
+                    className="w-[50vw] sm:h-[30vh]"
+                  />,
+                );
               }}
             >
               <FontAwesomeIcon icon={faPlay} className="mr-1" />
